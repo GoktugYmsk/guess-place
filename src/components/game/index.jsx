@@ -31,7 +31,7 @@ function GuessPlace() {
     <div className={`place-container ${darkMode ? "dark-mode" : "light-mode"}`}>
       <div className="toggle-theme" onClick={toggleDarkMode}>
         {darkMode ? (
-          <FaSun size={24} style={{ color: "white" }} /> // Beyaz güneş ikonu
+          <FaSun size={24} style={{ color: "white" }} />
         ) : (
           <FaMoon size={24} />
         )}

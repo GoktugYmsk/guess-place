@@ -1,0 +1,89 @@
+$primary-color: #007bff;
+$hover-color: #0056b3;
+$background-color: #f0f0f0;
+$input-border-color: #ccc;
+$form-background: white;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+@mixin button-style {
+  width: 100%;
+  padding: 10px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.place-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+
+  .place-form {
+    background-color: $form-background;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px $shadow-color;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $input-border-color;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .add-button {
+    @include button-style;
+  }
+  .random-button {
+    @include button-style;
+    width: 20%;
+  }
+
+  .places-list {
+    margin-top: 20px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        padding: 5px 0;
+        border-bottom: 1px solid $input-border-color;
+      }
+    }
+  }
+
+  .selected-place {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .place-form {
+    width: 100%;
+    padding: 15px;
+  }
+}

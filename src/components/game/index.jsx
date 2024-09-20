@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 import "./index.scss";
 
 function GuessPlace() {
   const [place, setPlace] = useState("");
   const [places, setPlaces] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +23,20 @@ function GuessPlace() {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="place-container">
+    <div className={`place-container ${darkMode ? "dark-mode" : "light-mode"}`}>
+      <div className="toggle-theme" onClick={toggleDarkMode}>
+        {darkMode ? (
+          <FaSun size={24} style={{ color: "white" }} /> // Beyaz güneş ikonu
+        ) : (
+          <FaMoon size={24} />
+        )}
+      </div>
+
       <form className="place-form" onSubmit={handleSubmit}>
         <h2>Enter a Place</h2>
         <div className="form-group">

@@ -5,6 +5,14 @@ $input-border-color: #ccc;
 $form-background: white;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
+$primary-color-dark: #343a40;
+$hover-color-dark: #1d2124;
+$background-color-dark: #222;
+$form-background-dark: #333;
+$input-border-color-dark: #555;
+$shadow-color-dark: rgba(0, 0, 0, 0.7);
+$text-color-dark: white;
+
 @mixin button-style {
   width: 100%;
   padding: 10px;
@@ -14,8 +22,32 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+
   &:hover {
     background-color: $hover-color;
+  }
+}
+
+@mixin theme($background, $form-background, $input-border-color, $text-color) {
+  background-color: $background;
+
+  .place-form {
+    background-color: $form-background;
+
+    input {
+      border-color: $input-border-color;
+      color: $text-color;
+    }
+
+    color: $text-color;
+  }
+
+  .places-list li {
+    border-color: $input-border-color;
+  }
+
+  .selected-place {
+    color: $text-color;
   }
 }
 
@@ -25,10 +57,31 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: $background-color;
+  transition: background-color 0.3s ease;
+
+  &.light-mode {
+    @include theme(
+      $background-color,
+      $form-background,
+      $input-border-color,
+      black
+    );
+  }
+
+  &.dark-mode {
+    @include theme(
+      $background-color-dark,
+      $form-background-dark,
+      $input-border-color-dark,
+      $text-color-dark
+    );
+
+    h3 {
+      color: white;
+    }
+  }
 
   .place-form {
-    background-color: $form-background;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px $shadow-color;
@@ -42,6 +95,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       align-items: center;
       justify-content: center;
       padding: 20px;
+
       input {
         width: 100%;
         padding: 10px;
@@ -52,11 +106,12 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     }
   }
 
-  .add-button {
-    @include button-style;
-  }
+  .add-button,
   .random-button {
     @include button-style;
+  }
+
+  .random-button {
     width: 20%;
   }
 
@@ -78,6 +133,14 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
+    color: black;
+  }
+
+  .toggle-theme {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 }
 

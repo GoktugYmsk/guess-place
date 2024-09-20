@@ -58,6 +58,7 @@ $text-color-dark: white;
   align-items: center;
   height: 100vh;
   transition: background-color 0.3s ease;
+  padding: 10px;
 
   &.light-mode {
     @include theme(
@@ -106,13 +107,16 @@ $text-color-dark: white;
     }
   }
 
-  .add-button,
+  .add-button {
+    @include button-style;
+  }
   .random-button {
     @include button-style;
+    width: 20% !important;
   }
 
   .random-button {
-    width: 20%;
+    width: 100%;
   }
 
   .places-list {
@@ -145,8 +149,40 @@ $text-color-dark: white;
 }
 
 @media (max-width: 768px) {
-  .place-form {
-    width: 100%;
+  .place-container {
     padding: 15px;
+
+    .place-form {
+      padding: 15px;
+      width: 100%;
+    }
+
+    .random-button {
+      width: 100%;
+    }
+
+    .places-list {
+      margin-top: 15px;
+    }
+  }
+
+  .selected-place {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .place-container {
+    .place-form {
+      padding: 10px;
+    }
+
+    .selected-place {
+      font-size: 1em;
+    }
+
+    .toggle-theme {
+      margin-bottom: 10px;
+    }
   }
 }
